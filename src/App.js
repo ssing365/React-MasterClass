@@ -1,28 +1,69 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const Father = styled.div`
+const Wrapper = styled.div`
 display:flex;
+align-items:center;
+justify-content:center;
+width: 100vw;
+height: 100vh;
+&:active{
+  background-color: cadetblue;
+};
 `;
-const Box = styled.div`
-background-color:${props => props.bgColor}; //1. prop을 이용해 중복되는 코드 없애고 간결하게
-width:100px;
-height:100px;
+
+const rotateAnimation = keyframes`
+0%{
+background-color:aliceblue;
+}
+50%{
+border-radius:100px;
+background-color:pink;
+}
+100%{
+transform:rotate(360deg);
+background-color:aliceblue;
+}
 `;
-const Circle = styled(Box)` //2.styled함수를 이용해 기존 컴포넌트 쉽게 확장시키기
-border-radius:50px;
+
+const Emoji = styled.div`
 `
-const Text = styled.h1`
-color:white`
+const Box = styled.div`
+background-color:blue;
+width:200px;
+height:200px;
+//Animation
+animation:${rotateAnimation} 2s linear infinite;
+//Pseudo Selector
+display:flex;
+align-items:center;
+justify-content:center;
+span{
+  font-size:40px;
+  &:hover{
+    font-size:60px;
+  }
+  &:active{
+    background-color: cadetblue;
+  }
+}
+
+${Emoji}{
+  &:hover{
+    font-size: 90px;
+  }
+}
+`;
+
 
 function App() {
   return (
-    <Father>
-      <Box bgColor='tomato'>
-        <Text>Hello</Text>
+    <Wrapper>
+      <Box>
+        <span>😵‍💫</span>
+        <Emoji>😵</Emoji>
       </Box>
-      <Box bgColor='teal' />
-      <Circle bgColor='blue'/>
-    </Father>
+      <Emoji>😏</Emoji>
+    </Wrapper>
   );
 }
 
