@@ -1,11 +1,20 @@
-import Circle from "./Circle";
+import { useState } from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  background-color: ${(props) => props.theme.bgColor};
+  width: 100vw;
+  height: 100vh;
+`;
+const H1 = styled.h1`
+  color: ${(props) => props.theme.textColor};
+`;
 
 function App() {
   return (
-    <>
-      <Circle bgColor='tomato' borderColor='blue' text="🎪"/>
-      <Circle bgColor='teal'/>
-    </>
+    <Container>
+      <H1>oh yeah</H1>
+    </Container>
   );
 }
 
